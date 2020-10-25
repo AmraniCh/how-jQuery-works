@@ -68,30 +68,30 @@
         }
     };
 
+    // Is array or array-like object ?
     var isArray = jQuery.isArray = function(arr) {
         return arr.constructor.name === 'Array' || arr.length && typeof arr.length === 'number';
     };
 
     // Intilialize the '$.function' functions
-    jQuery.each = function(list, clb) {
-        if (isArray(list)) {
-            var i = list.length;
+    jQuery.each = function(obj, clb) {
+        if (isArray(obj)) {
+            var i = obj.length;
             while(i--) {
-                clb.call(list[i]); 
+                if (!clb.call(obj[i])) break; 
             }
         } else {
-            for (var prop in list) {
-                if (list.hasOwnProperty(prop)) {
+            for (var prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
                     if (typeof prop === 'number') 
-                        clb.call(list[prop]);
+                        if (!clb.call(obj[prop])) break;;
                 }
             }
-            return list;
+            return obj;
         }
     };
 
     jQuery.noop = function() {};
-    jQuery.isReady = function() {};
     //..    
 
     // Assign the jQuery.fn.init prototype to jQuery prototype that contains the API methods
