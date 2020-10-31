@@ -1,6 +1,6 @@
 # how-jQuery-works
 
-> A small simulation of jQuery core with some basic methods for better understanding jQuery internals.
+A small simulation of jQuery core with some basic methods for better understanding jQuery internals.
 
 ## TODO
 
